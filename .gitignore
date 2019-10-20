@@ -1,0 +1,15 @@
+.idea
+venv
+
+__pycache__/
+*/__pycache__/
+*.pyc
+*.py[cod]
+download/
+
+download.html
+fill_index.html
+
+sql/
+
+db.peflstat
