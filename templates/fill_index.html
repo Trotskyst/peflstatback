@@ -1,0 +1,86 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_chemp' %}">#}
+{#    Скачать список турниров, дивизионов и команд#}
+{#</button>#}
+{##}
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_rasp' season=season %}">#}
+{#    Скачать расписание#}
+{#</button>#}
+
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_tur' season=season %}">#}
+{#    Скачать список матчей#}
+{#</button>#}
+{##}
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_gametext' season=season %}">#}
+{#    Скачать матчи#}
+{#</button>#}
+{##}
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_report_processing' season=season %}">#}
+{#    Обработать матчи#}
+{#</button>#}
+{##}
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_report_players_processing' season=season %}">#}
+{#    Обработать матчи по игрокам#}
+{#</button>#}
+
+<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_report_goals_processing' season=season %}">
+    Ежедневная обработка
+</button>
+
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_tests' season=season %}">#}
+{#    Прогнать тесты#}
+{#</button>#}
+
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_makedir' season=season %}">#}
+{#    Создать каталоги#}
+{#</button>#}
+
+
+{#<button class="btn btn-sm btn-info download mt-3 mb-3" data-url="{% url 'fill_test_ttd' %}">#}
+{#    Проверить ТТД#}
+{#</button>#}
+
+        <div id="floatBarsG">
+            <div id="floatBarsG_1" class="floatBarsG"></div>
+            <div id="floatBarsG_2" class="floatBarsG"></div>
+            <div id="floatBarsG_3" class="floatBarsG"></div>
+            <div id="floatBarsG_4" class="floatBarsG"></div>
+            <div id="floatBarsG_5" class="floatBarsG"></div>
+            <div id="floatBarsG_6" class="floatBarsG"></div>
+            <div id="floatBarsG_7" class="floatBarsG"></div>
+            <div id="floatBarsG_8" class="floatBarsG"></div>
+        </div>
+
+
+    <div class="result"></div>
+
+</body>
+</html>
+
+
+<script type='text/javascript'>
+    $(".download").on("click", function () {
+        $('.floatBarsG').show();
+        $(".result").html('');
+        $.ajax({
+            url: $(this).attr("data-url"),
+            success: function (data) {
+                $(".result").html(data);
+                $('.floatBarsG').hide();
+            }
+        });
+    });
+</script>
